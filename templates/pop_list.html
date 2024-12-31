@@ -2,13 +2,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body style= "text-align:left; background-color: #f9f9f9; font-family: 'Love Ya Like A Sister', sans-serif; color: rgb(20, 20, 1);">
-   <h1 style="text-align: center;"> This week's pop ups </h1> <br> <br> 
-   <ol style="font-size: larger;">
+<body>
+   <h1> This week's pop ups </h1> <br> <br> 
+   <ol>
         {% for event in events %}
         <li>
-            <div style="font-size: x-large; color: blueviolet;"> {{ event.event_type }} {{event.event_date}} </div> 
+            <div> {{ event.event_type }} {{event.event_date}} </div> 
              hosted by {{ event.first_name }} {{ event.last_name }} at
             {{ event.address }}, starting from {{event.time}} <br>
             Price range {{event.price_range}} <br>

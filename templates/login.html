@@ -1,0 +1,45 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>
+        Welcome to Underground TLV
+    </h1>
+    
+    <h2>
+        Host? Login here
+    </h2>
+    <form method="POST">
+    {% with input_email = input_email %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li class = "error" > {{ message }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <label for="email"> Email </label><br>
+    <input type="email" placeholder="example@example.com" value="{{ input_email if input_email else '' }}" id="email" name="email" required><br>
+    <label for="password"> Password </label><br>
+    <input type="password" id="password" name="password" required>
+    <br><br>
+    <button type="submit" value="Submit"> Submit </button>
+    {% endwith %}
+    {% endwith %}
+    </form>
+    
+    <br> <br>
+    <h2> Wanna host a pop-up? </h2>
+    <a class="to_login" href="/sign_up">
+         <button class = "button1"> join here ! </button>
+    </a>
+
+    <h3 class = "corner_link">
+        <a href="/"> back to homepage </a>
+    </h3>
+    
+</body>

@@ -1,0 +1,80 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>
+    Wanna Host? sign up here!
+    </h1>
+    <form method="POST">
+     {% with errors = errors %}
+        {% if errors.get('First Name') %}
+        <ul>
+            {% for error in errors['First Name'] %}
+            <li class="error"> {{ error }} </li> 
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <label for="first_name">First Name</label><br>
+        <input type="text" id="first_name" name="first_name"
+        value="{{ form_data.first_name if form_data else '' }}" maxlength="20" required>
+        <br>
+
+        {% if errors.get('Last Name') %}
+        <ul>
+            {% for error in errors['Last Name'] %}
+            <li class="error"> {{ error }} </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <label for="last_name">Last Name</label><br>
+        <input type="text" id="last_name" name="last_name" value="{{ form_data.last_name if form_data else '' }}" maxlength="30" required><br>
+        <br>
+
+        {% if errors.get('Email') %}
+        <ul>
+            {% for error in errors['Email'] %}
+            <li class="error"> {{ error }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <label for="email">Email</label><br>
+        <input type="email" placeholder="example@example.com" id="email" name="email" maxlength="50" value="{{ form_data.email if form_data else '' }}" required><br>
+        <br>
+        {% if errors.get('Phone') %}
+        <ul>
+            {% for error in errors['Phone'] %}
+            <li class="error"> {{ error }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <label for="phone">Phone</label><br>
+        <input type="text" id="phone" name="phone" maxlength ="11" value="{{ form_data.phone if form_data else '' }}" required><br>
+        <br>
+
+        {% if errors.get('Password') %}
+        <ul>
+            {% for error in errors['Password'] %}
+            {% if error != "Passwords don't match" %}
+                <li class="error"> {{ error }} </li> 
+            {% endif %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+    
+        <label for="password1">Password:</label><br>
+        <input type="password" id="password1" name="password1" maxlength="30" required><br> 
+        <br>
+        <label for ="password2">Confirm Password:</label><br>
+        <input type="password" id="password2" name="password2" maxlength="30" required><br>
+        <br>
+        {% if "Passwords don't match" in errors["Password"]  %}
+            <li class="error"> Passwords don't match! </li>
+        {% endif %}
+        <br>
+        <button class = "button1" type="submit" value="Submit"> Submit </button>
+        {% endwith %}
+    </form>  
+</body>
