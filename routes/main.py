@@ -1,14 +1,38 @@
-from flask import Blueprint, render_template, request, flash, redirect
+from flask import Blueprint, render_template, request, flash, redirect, current_app 
 from datetime import datetime
 from db import db
 from models import Host, Event
 from form_validations.sign_up_validation import validate_input
+
 
 main = Blueprint('main', __name__)
 
 @main.route('/', methods=['GET', 'POST'])
 def homepage():
     return render_template('home.html')
+
+@main.route('/admin_login', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'GET':
+        return render_template('admin_login.html', input_username = '')
+    else:
+        username = request.form['username']
+        password = request.form['password']
+        if username == current_app.config['ADMIN_USERNAME'] and password == current_app.config['ADMIN_PASSWORD']:
+            return redirect('/admin_page')
+        else:
+            flash("Incorrect Username and/or Password, please try again")
+            return render_template('admin_login.html', inpute_username=username)
+
+@main.route('/admin_page', methods=['GET'])
+def admin_page():
+    if request.method == 'GET':
+     return render_template('admin_page.html', first_name='Ben')
+
+@main.route('/delete_event', methods=['GET', 'POST'])
+def delete_event():
+    if request.method =='GET':
+        return render_template('delete_event.html')
 
 @main.route('/pop_list')
 def pop_list():
@@ -114,3 +138,10 @@ def event_form():
 @main.route('/sent')
 def sent():
     return render_template('sent.html')
+
+@main.route('/my_events')
+def my_events():
+    my_events = Event.query.order_by(Event.event_date.desc(), Event.time.desc()).all()
+    if my_events:
+        return render_template('my_events.html', my_events=my_events)
+    return render_template('my_events.html')

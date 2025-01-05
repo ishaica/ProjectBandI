@@ -10,6 +10,9 @@ app.config['SQLALCHEMY_BINDS'] = {
     'event_db': 'sqlite:///C:/Users/benca/ProjectBandI/tables/event.db'
 }
 
+app.config['ADMIN_USERNAME'] = 'affogato_master'
+app.config['ADMIN_PASSWORD'] = 'BenjiBear1'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'benji'
 

@@ -1,0 +1,25 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {%with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li> {{ message }} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    <form action="/admin_login" method="post"> 
+        <h1> Admin Login </h1>
+        <label for="username" value = "{{input_username if input_username else ''}}"> > Username </label> <br>
+        <input type="text" id="username" name="username"> <br> <br>
+        <label for="password"> Password </label> <br>
+        <input type="password" id="password" name="password"> <br> <br>
+        <input type="submit" value="Login">
+    </form>
+    {% endwith %}
+</body>
