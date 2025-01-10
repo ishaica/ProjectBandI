@@ -6,16 +6,7 @@
 </head>
 <body>
    <h1> This week's pop ups </h1> <br> <br> 
-   <ol>
-        {% for event in events %}
-        <li>
-            <div> {{ event.event_type }} {{event.event_date}} </div> 
-             hosted by {{ event.first_name }} {{ event.last_name }} at
-            {{ event.address }}, starting from {{event.time}} <br>
-            Price range {{event.price_range}} <br>
-            Contact {{ event.phone_number }} for more details. <br>
-        </li>
-    {% endfor %}
-   </ol>
+   <br> <br> <br> 
+   <h2 class="future_plans"> Events will be displayed here </h2>
 </body>
 

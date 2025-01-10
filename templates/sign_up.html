@@ -5,23 +5,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>
-    Wanna Host? sign up here!
-    </h1>
+   <br> <br>
     <form method="POST">
+    <div class = "sign_up_form">
+    <div class = "row">
      {% with errors = errors %}
         {% if errors.get('First Name') %}
         <ul>
-            {% for error in errors['First Name'] %}
+            {% for error in errors ['First Name'] %}
             <li class="error"> {{ error }} </li> 
             {% endfor %}
         </ul>
         {% endif %}
+        <div class = "group">
         <label for="first_name">First Name</label><br>
         <input type="text" id="first_name" name="first_name"
-        value="{{ form_data.first_name if form_data else '' }}" maxlength="20" required>
+        value="{{ form_data.first_name if form_data else '' }}" maxlength="20" required><br>
         <br>
-
+        </div>
+    <div class = "group">
         {% if errors.get('Last Name') %}
         <ul>
             {% for error in errors['Last Name'] %}
@@ -30,9 +32,9 @@
         </ul>
         {% endif %}
         <label for="last_name">Last Name</label><br>
-        <input type="text" id="last_name" name="last_name" value="{{ form_data.last_name if form_data else '' }}" maxlength="30" required><br>
-        <br>
-
+        <input type="text" id="last_name" name="last_name" value="{{ form_data.last_name if form_data else '' }}" maxlength="30" required>
+    </div>
+    <div class = "group">
         {% if errors.get('Email') %}
         <ul>
             {% for error in errors['Email'] %}
@@ -42,7 +44,12 @@
         {% endif %}
         <label for="email">Email</label><br>
         <input type="email" placeholder="example@example.com" id="email" name="email" maxlength="50" value="{{ form_data.email if form_data else '' }}" required><br>
-        <br>
+    </div>
+    </div>
+    </div>
+    <div class = "sign_up_form">
+    <div class = "row">
+    <div class = "group">
         {% if errors.get('Phone') %}
         <ul>
             {% for error in errors['Phone'] %}
@@ -53,7 +60,8 @@
         <label for="phone">Phone</label><br>
         <input type="text" id="phone" name="phone" maxlength ="11" value="{{ form_data.phone if form_data else '' }}" required><br>
         <br>
-
+    </div>
+    <div class = "group">
         {% if errors.get('Password') %}
         <ul>
             {% for error in errors['Password'] %}
@@ -63,18 +71,24 @@
             {% endfor %}
         </ul>
         {% endif %}
-    
-        <label for="password1">Password:</label><br>
+    </div>
+    <div class = "group">
+        <label for="password1">Password</label><br>
         <input type="password" id="password1" name="password1" maxlength="30" required><br> 
         <br>
-        <label for ="password2">Confirm Password:</label><br>
+    </div>
+    <div class = "group">
+        <label for ="password2">Confirm</label><br>
         <input type="password" id="password2" name="password2" maxlength="30" required><br>
         <br>
+    </div>
+    </div>
+    </div>
         {% if "Passwords don't match" in errors["Password"]  %}
             <li class="error"> Passwords don't match! </li>
         {% endif %}
         <br>
-        <button class = "button1" type="submit" value="Submit"> Submit </button>
+        <button class = "button3" type="submit" value="Submit"> Send </button>
         {% endwith %}
     </form>  
 </body>

@@ -2,8 +2,8 @@ from flask import Blueprint, render_template, request, flash, redirect, current_
 from datetime import datetime
 from db import db
 from models import Host, Event
-from form_validations.sign_up_validation import validate_input
-
+from form_validations.sign_up_validation import validate_host
+from form_validations.event_valid import validate_event
 
 main = Blueprint('main', __name__)
 
@@ -26,13 +26,31 @@ def admin_login():
 
 @main.route('/admin_page', methods=['GET'])
 def admin_page():
+    host_list = Host.query.all()
     if request.method == 'GET':
-     return render_template('admin_page.html', first_name='Ben')
+     return render_template('admin_page.html', first_name='Ben', hosts=host_list)
+
+@main.route('/update_event', methods=['GET', 'POST'])
+def update_event():
+    if request.method =='GET':
+        return render_template('update_event.html')
 
 @main.route('/delete_event', methods=['GET', 'POST'])
 def delete_event():
+    events = Event.query.order_by(Event.event_date.desc(), Event.time.desc()).all()
     if request.method =='GET':
+        return render_template('delete_event.html', events=events if events else []) 
+
+@main.route('/delete_event/<int:id>', methods=['POST'])
+def delete_event_by_id(id):
+    event = Event.query.get(id)
+    if not event:
+        flash("Event not found")
         return render_template('delete_event.html')
+    db.session.delete(event)
+    db.session.commit()
+    flash("Event deleted successfully")
+    return redirect('delete_event.html', events=Event.query.all())
 
 @main.route('/pop_list')
 def pop_list():
@@ -72,7 +90,7 @@ def sign_up():
         if exists:
             flash("already a member")
             return redirect('/')
-    errors = validate_input(first_name, last_name, email, phone, password1, password2)
+    errors = validate_host(first_name, last_name, email, phone, password1, password2)
     if errors == {}:
         new_host = Host(first_name=first_name,last_name=last_name,
         email=email, phone=phone,password=password1)
@@ -116,9 +134,9 @@ def event_form():
             Event.time == time
         ).first()
         if exists:
-            flash("Application in process")
-            return redirect('/host_page')
-        message = validate_input(event_type, description, address, event_date, time, price_range)
+            flash("Event already registered")
+            return redirect('/my_events')
+        message = validate_event(event_type, description, address, event_date, time, price_range)
         if message == "":
             new_event = Event(
                 event_type=event_type,
@@ -128,10 +146,11 @@ def event_form():
                 time=time,
                 price_range=price_range,
             )
-            db.session.add(event)
+            db.session.add(new_event)
             db.session.commit()
-            return redirect('/sent')
+            return redirect('sent.html')
         else:
+            flash(message)
             return render_template('new_event.html', form_data=request.form)
     return render_template('new_event.html')
 
@@ -142,6 +161,4 @@ def sent():
 @main.route('/my_events')
 def my_events():
     my_events = Event.query.order_by(Event.event_date.desc(), Event.time.desc()).all()
-    if my_events:
-        return render_template('my_events.html', my_events=my_events)
-    return render_template('my_events.html')
+    return render_template('my_events.html', my_events=my_events)

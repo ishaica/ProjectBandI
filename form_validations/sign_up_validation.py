@@ -38,7 +38,7 @@ def valid_password(password):
         errors.append("Password must contain an uppercase letter")
     return errors
 
-def validate_input(first_name, last_name, email, phone, password1, password2):
+def validate_host(first_name, last_name, email, phone, password1, password2):
     
     output = {"First Name": [], "Last Name": [], "Email": [], "Phone": [], "Password": []}
     

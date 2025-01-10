@@ -6,15 +6,29 @@
 </head>
 <body>
     <h1>
-        Welcome back,
-        {{ first_name }} !
-        what would you like to do?
+        Hey {{ first_name }} !
     </h1>
-    <br> <br> <br>     
-        <button class = "button1"> Update Events </button>
+    <br> <br> <br>    
+
+    <a href="/update_event">
+        <button class = "button3"> Update </button>
     </a>
+
     <br> <br>
     <a href="/delete_event">
-        <button class = "button1"> Delete Events </button>
+        <button class = "button3"> Delete </button>
     </a>
+
+    <br> <br>
+    <ul>
+        {% with hosts = hosts %}
+        {% if hosts %}
+        <h2> host list </h2>
+            {% for host in hosts %}
+                <h3> {{ host.first_name }} {{ host.last_name }} </h3>
+            {% endfor %}
+        {% else %}
+            <h1> No hosts </h1>
+        {% endif %}
+        {% endwith %}
 </body>

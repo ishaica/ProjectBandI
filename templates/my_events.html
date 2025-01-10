@@ -5,16 +5,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    {% with my_events = my_events %}
         {% if my_events %}
-            <ul>
+            <table class="event_table">
                 {% for event in my_events %}
-                    <li>
-                       <a><{{event.type}}:{{event.description}}</a>
-                    </li>
+                    <tr class="event_table"> {{event.event_type}} - {{event.event_date}} </tr>
                 {% endfor %}
             </ul>
-
         {% else %}
             <h1> No upcoming events </h1>
         {% endif %}
+        {% endwith %}
 </body>

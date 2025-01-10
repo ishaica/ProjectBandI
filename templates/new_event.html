@@ -15,7 +15,7 @@
         {% endif %}
     {% endwith %}
     <h1> Fill Your application </h1>
-    <form action="/new_event" method="POST">
+    <form method="POST" action="/new_event">
         <div class="outer_block">
             <div class="inner_block">
                 <label for="event_type"> What's your event? </label><br>
@@ -49,6 +49,6 @@
                        value="{{ form_data.price_range if form_data else '' }}" required><br><br>
             </div>
         </div>
-        <button type="submit" class="button1"> Submit here </button>
+        <button type="submit" class="button3"> Submit </button>
     </form>
 </body>

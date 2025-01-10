@@ -13,13 +13,18 @@
                 {% endfor %}
             </ul>
         {% endif %}
+        <br> <br> <br> <br> <br> <br> <br> <br> <br>
     <form action="/admin_login" method="post"> 
-        <h1> Admin Login </h1>
-        <label for="username" value = "{{input_username if input_username else ''}}"> > Username </label> <br>
+        <label for="username" value = "{{input_username if input_username else ''}}"> > admin key </label> <br>
         <input type="text" id="username" name="username"> <br> <br>
         <label for="password"> Password </label> <br>
         <input type="password" id="password" name="password"> <br> <br>
-        <input type="submit" value="Login">
+        <input class = "button3" type="submit" value="Login">
     </form>
     {% endwith %}
+
+    <h3 class = "corner_link">
+        <a href="/"> Homepage </a>
+    </h3>
+
 </body>
