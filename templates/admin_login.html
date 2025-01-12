@@ -1,7 +1,7 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -15,16 +15,19 @@
         {% endif %}
         <br> <br> <br> <br> <br> <br> <br> <br> <br>
     <form action="/admin_login" method="post"> 
-        <label for="username" value = "{{input_username if input_username else ''}}"> > admin key </label> <br>
+        <label for="username" value = "{{input_username if input_username else ''}}"> Admin Key </label> <br>
         <input type="text" id="username" name="username"> <br> <br>
         <label for="password"> Password </label> <br>
-        <input type="password" id="password" name="password"> <br> <br>
-        <input class = "button3" type="submit" value="Login">
+        <input type="password" id="password" name="password"> <br> <br> <br>
+        <input class = "button3" type="submit" value="">
     </form>
     {% endwith %}
 
-    <h3 class = "corner_link">
+    <h3 class = "corner_link1">
         <a href="/"> Homepage </a>
     </h3>
-
 </body>
+<footer>
+    <p> @ ben_ashamen </p>
+</footer>
+

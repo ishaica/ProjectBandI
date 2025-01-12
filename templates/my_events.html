@@ -1,19 +1,38 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    {% with message = get_flashed_messages() %}
+    {% if message %}
+        <h2> {{ message }} </h2> 
+    {% endif %}
+    {% endwith %}
     {% with my_events = my_events %}
         {% if my_events %}
             <table class="event_table">
                 {% for event in my_events %}
-                    <tr class="event_table"> {{event.event_type}} - {{event.event_date}} </tr>
+                    <tr class="event_table"> </tr>
+                    <td> {{event.event_type}} </td>
+                    <td> {{event.event_date}} </td>
+                    <td class="event_table" style="width:45px; text-align:center"> 
+                        <form action="{{ url_for('main.delete_my_event_by_id', id=event.id) }}" method="POST">
+                            <button type="submit" class="delete_button">X</button>
+                        </form>                
+                    </td>
                 {% endfor %}
-            </ul>
+            </ul>  
+            </table>
+            <h3 class = "corner_link">
+                <a href="/host_page"> back </a>
+            </h3>
         {% else %}
             <h1> No upcoming events </h1>
         {% endif %}
         {% endwith %}
 </body>
+<footer>
+    <p> @ ben_ashamen </p>
+</footer>

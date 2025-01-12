@@ -24,38 +24,27 @@ def admin_login():
             flash("Incorrect Username and/or Password, please try again")
             return render_template('admin_login.html', inpute_username=username)
 
-@main.route('/admin_page', methods=['GET'])
+@main.route('/admin_page', methods=['GET', 'POST'])
 def admin_page():
-    host_list = Host.query.all()
     if request.method == 'GET':
-     return render_template('admin_page.html', first_name='Ben', hosts=host_list)
+     return render_template('admin_page.html', first_name='Ben', events=Event.query.all() ,hosts = Host.query.all())
 
-@main.route('/update_event', methods=['GET', 'POST'])
-def update_event():
-    if request.method =='GET':
-        return render_template('update_event.html')
 
-@main.route('/delete_event', methods=['GET', 'POST'])
-def delete_event():
-    events = Event.query.order_by(Event.event_date.desc(), Event.time.desc()).all()
-    if request.method =='GET':
-        return render_template('delete_event.html', events=events if events else []) 
-
-@main.route('/delete_event/<int:id>', methods=['POST'])
+@main.route('/admin_page/<int:id>', methods=['POST'])
 def delete_event_by_id(id):
     event = Event.query.get(id)
     if not event:
         flash("Event not found")
-        return render_template('delete_event.html')
+        return render_template('admin_page.html', events=Event.query.all(), hosts=Host.query.all())
     db.session.delete(event)
     db.session.commit()
-    flash("Event deleted successfully")
-    return redirect('delete_event.html', events=Event.query.all())
+    flash(" Event deleted successfully ")
+    return render_template('admin_page.html', events=Event.query.all(), hosts=Host.query.all())
 
 @main.route('/pop_list')
 def pop_list():
-    events = Event.query.order_by(Event.event_date.desc(), Event.time.desc()).all()
-    return render_template('pop_list.html', events=events)
+    return render_template('pop_list.html', events=Event.query.order_by(Event.event_date.desc(),
+     Event.time.desc()).all())
 
 @main.route('/login', methods=['GET', 'POST'])
 def login():
@@ -78,7 +67,8 @@ def login():
 @main.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'GET':
-        return render_template('sign_up.html', form_data={}, errors={})
+        num_hosts = Host.query.count()
+        return render_template('sign_up.html', form_data={}, errors={}, num_hosts=num_hosts)
     else:
         first_name = request.form['first_name']
         last_name = request.form['last_name']
@@ -148,17 +138,24 @@ def event_form():
             )
             db.session.add(new_event)
             db.session.commit()
-            return redirect('sent.html')
+            return render_template('my_events.html', my_events=Event.query.all())
         else:
             flash(message)
             return render_template('new_event.html', form_data=request.form)
     return render_template('new_event.html')
 
-@main.route('/sent')
-def sent():
-    return render_template('sent.html')
-
 @main.route('/my_events')
 def my_events():
     my_events = Event.query.order_by(Event.event_date.desc(), Event.time.desc()).all()
     return render_template('my_events.html', my_events=my_events)
+
+@main.route('/delete_my_event_by_id/<int:id>', methods=['POST'])
+def delete_my_event_by_id(id):
+    event = Event.query.get(id)
+    if not event:
+        flash("Event not found")
+        return render_template('my_events.html')
+    db.session.delete(event)
+    db.session.commit()
+    flash("Event deleted successfully")
+    return render_template('my_events.html', my_events=Event.query.all())

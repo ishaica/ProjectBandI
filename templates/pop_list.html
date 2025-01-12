@@ -1,12 +1,28 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    {% with pop_list = pop_list %}
+        {% if pop_list %}
+            <table class="event_table">
+                {% for pop in pop_list %}
+                    <tr class="event_table"> {{pop.event_type}} - {{pop.event_date}} </tr>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
    <h1> This week's pop ups </h1> <br> <br> 
    <br> <br> <br> 
    <h2 class="future_plans"> Events will be displayed here </h2>
+   <h3 class = "corner_link1">
+    <a href="/"> Homepage </a>
+    </h3>
 </body>
+<footer>
+    <p> @ ben_ashamen </p>
+</footer>
+
 

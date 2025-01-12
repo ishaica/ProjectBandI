@@ -1,29 +1,53 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>
-        Hey {{ first_name }} !
-    </h1>
-    <br> <br> <br>    
-
-    <a href="/update_event">
-        <button class = "button3"> Update </button>
-    </a>
-
+    <h2 class = "admin_greeting">
+    {{ first_name }}'s Admin panel
+    </h2>
     <br> <br>
-    <a href="/delete_event">
-        <button class = "button3"> Delete </button>
-    </a>
+    {% with message = get_flashed_messages() %}
+    {% if message %}
+        <h2> {{ message }} </h2> 
+    {% endif %}
+    {% endwith %}
+    {% with events = events %}
+    <h2 class="admin_header"> Events </h2>
+    {% if events %}
+    <table style="display: flex; justify-content: center;">
+        <tr class="table_row">
+            <th class="table_header">Event Type</th>
+            <th class="table_header">Address</th>
+            <th class="table_header">Event Date</th>
+            <th class="table_header">Time</th>
 
+        </tr>
+    {% for event in events %}
+        <div>
+            <tr class="table_row">    
+                <td>
+                    <form action="{{ url_for('main.delete_event_by_id', id=event.id) }}" method="POST">
+                        <button type="submit" class="delete_button">X</button>
+                    </form>      
+                 </td>      
+                <td class="table_item"> {{ event.event_type }} </td>
+                <td class="table_item"> {{ event.address }} </td>
+                <td class="table_item"> {{ event.event_date }} </td>
+                <td class="table_item"> {{ event.time }} </td>
+            </tr>
+        </div>
+    {% endfor %}
+    </table>
+            {% endif %}
+    {% endwith %}
     <br> <br>
     <ul>
         {% with hosts = hosts %}
         {% if hosts %}
-        <h2> host list </h2>
+        <h2 class="admin_header"> Hosts </h2>
             {% for host in hosts %}
                 <h3> {{ host.first_name }} {{ host.last_name }} </h3>
             {% endfor %}
@@ -32,3 +56,6 @@
         {% endif %}
         {% endwith %}
 </body>
+<footer>
+    <p> @ ben_ashamen </p>
+</footer>

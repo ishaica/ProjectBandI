@@ -1,12 +1,11 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body> 
-    <br> <br> <br>  
-    <h2> Login </h2>
+<body>   
+    <br> <br> <br> <br> <br>
     <form method="POST">
     {% with input_email = input_email %}
     {% with messages = get_flashed_messages() %}
@@ -17,23 +16,25 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <label for="email"> Email </label><br>
+    <label for="email"> Email </label>
     <input type="email" placeholder="example@example.com" value="{{ input_email if input_email else '' }}" 
     id="email" name="email" required><br><br>
-    <label for="password"> Password </label><br>
+    <label for="password"> Password </label>
     <input type="password" id="password" name="password" required>
     <br><br>
-    <button class="button3" type="submit" value="Submit"> Login </button>
+    <button class="button3" type="submit" value="Submit">  </button>
     {% endwith %}
     {% endwith %}
     </form>
     <br> 
-    <h2> Sign up </h2>
+    <h2> Not a registered host? sign up now </h2>
     <a class="to_login" href="/sign_up">
-         <button class = "button3"> New Host </button>
+         <button class = "button3"> </button>
     </a>
-
-    <h3 class = "corner_link">
+    <h3 class = "corner_link1">
         <a href="/"> Homepage </a>
     </h3>
 </body>
+<footer>
+    <p> @ ben_ashamen </p>
+</footer>

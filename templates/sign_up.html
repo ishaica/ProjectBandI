@@ -1,12 +1,18 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-   <br> <br>
-    <form method="POST">
+    {% with num_hosts = num_hosts %}
+    {% if num_hosts %}
+   <h1> Join {{ num_hosts }} hosts in our community now!</h1>
+   {%else%}
+    <h1> Join our community today!</h1>
+    {% endif %}
+    {% endwith %}
+    <form method="POST" class="sign_up_form">
     <div class = "sign_up_form">
     <div class = "row">
      {% with errors = errors %}
@@ -88,7 +94,13 @@
             <li class="error"> Passwords don't match! </li>
         {% endif %}
         <br>
-        <button class = "button3" type="submit" value="Submit"> Send </button>
+        <button class = "button3" type="submit" value="Submit">  </button>
         {% endwith %}
     </form>  
+    <h3 class = "corner_link1">
+        <a href="/"> Homepage </a>
+        </h3>
 </body>
+<footer>
+    <p> @ ben_ashamen </p>
+</footer>

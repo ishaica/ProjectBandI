@@ -1,13 +1,27 @@
 
 .error
 {
-    color: red;
+    color: rgb(237, 82, 82);
     text-align: center;
     list-style-position: inside;
-    font-family: 'Love Ya Like A Sister', sans-serif;
     font-size: small;
 }
 
+.button3
+{
+    display: flex;
+    width: 83px;
+    height: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    gap: 8px;
+    border-radius: 100px;
+    border-color: #c2b0f0;
+    background: var(--Schemes-Primary, #c2b0f0);
+
+}
 .button1
  {
     width: 200px;
@@ -16,52 +30,31 @@
     background-color: #e7e7e7; 
     color: black;
     border-radius: 12px;
-    font-family: 'Love Ya Like A Sister', sans-serif;
     cursor: pointer;
     display: inline-block;
     margin : 10px;
-    font-weight: bold;
  }
 
- .button2
+ .ramen_button
 {
-    width: 200px;
-    height: 200px;
-    font-family: 'Love Ya Like A Sister', sans-serif;
-    font-size: 19px;
-    background-color: #f7b8dd;
-    color: white;
+    width: 180px;
+    height: 180px;
     border: none;
     border-radius: 143px;
     cursor: pointer;
-    background-image: url('../static/images/ramen.jpg');
+    background-image: url('../static/images/ramen.png');
     background-size: cover;
     background-position: center;
     justify-content: center;
     align-content: center;
  }
 
- .button3
- {
-    width: 70px;
-    height: 50px;
-    font-size: 16px;
-    background-color: #e7e7e7; 
-    color: black;
-    border-radius: 12px;
-    font-family: 'Love Ya Like A Sister', sans-serif;
-    cursor: pointer;
-    display: inline-block;
-    margin : 10px;
-    font-weight: bold;
- }
 
 
 .to_login
 {
     text-align: center;
-    font-family: 'Love Ya Like A Sister', sans-serif;
-    color: black;
+    color: #c2b0f0;
     justify-content: center;
     align-content: center;
     font-weight: bold;
@@ -82,6 +75,14 @@
     flex-direction: column; 
     width: 40%; 
     margin: auto;
+    margin-top: 40px;
+}
+
+.inner_block2
+{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-right: 170px;
 }
 
 .event_input
@@ -91,13 +92,22 @@
     width: 200px;
 }
 
-.corner_link
+.corner_link1
 {
     position: absolute;
     top: 0;
     left: 20;
-    font-family: 'Love Ya Like A Sister', sans-serif;
-    color: blue;
+    color: #c2b0f0;;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.corner_link2
+{
+    position: absolute;
+    top: 0;
+    left: 80;
+    color: #c2b0f0;;
     text-decoration: none;
     font-size: medium;
 }
@@ -105,11 +115,8 @@
 .future_plans
 {
     position: center;
-    font-family: 'Love Ya Like A Sister', sans-serif;
-    color: black;
     text-decoration: none;
     font-size: x-large;
-    font-weight: bold;
 }
 
 .sign_up_form
@@ -125,52 +132,68 @@
     display: flex;
     flex-direction: row;
     flex-flow: row;
-    flex:1;
+    align-items: flex-start;
     justify-content: space-between;
-    margin: 10px 0;
-    gap: 10px;
-}
-
-.event_table
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:0;
-    border-style: ridge;
-    border: 1px solid black;
-    font-size: large;
+    gap: 15px;
 }
 
 .table_header
 {
+    padding: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin:0;
-    border-style: ridge;
     border: 1px solid black;
     font-size: x-large;
     font-weight: bold;
+    width: 100%;
 }
+
+.table_row
+{
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    font-size: large;
+    width: 100%;
+}
+
 
 .delete_button
 {
-    background-color: red;
-    color: white;
-    border-radius: 10px;
-    font-size: large;
+    background-image: url('../static/images/delete.png');
+  
+}
+
+.delete_button:hover
+{
+    background-color: gainsboro
+}
+
+.admin_greeting
+{
+    text-align: left;
+    color: darkgrey;
+}
+
+.admin_header
+{
+    display: flex;
+    justify-content: center;
     font-weight: bold;
 }
 
-.group label {
+.group label 
+{
+    margin-top: 60px;
     display: block;
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-bottom: -20px;
     flex: 1;
+    align-items: flex-start;
 }
 
-.group input {
+.group input 
+{
     flex: 1;
     padding: 8px;
     font-size: 16px;
@@ -179,33 +202,54 @@
     box-sizing: border-box;
 }
 
+.sign_up_form
+{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: flex-end;
+}
 
+.event_type
+{
+    width: 120px;
+    height: 30px;
+    font-size: 16px;
+    background-color: #e7e7e7;
+    color: black;
+    border-radius: 12px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: -25px ;
+    margin-bottom: 60px;
+    margin-left: 185px;
+}
 body 
 {
-    background-color: #f9f9f9;
-    font-family: 'Love Ya Like A Sister', sans-serif;           
-    text-align: center          
+    text-align: center;
+    background-color: #f9f9f9;                    
 }
 
 h1
 {
+    margin-top: 20px;
     font-size: 45px;
     font-weight: bold;
-    font-family: 'Love Ya Like A Sister', sans-serif;
-    color: blueviolet;
+    color: #c2b0f0;
 }
 
 h2
 {
-    font-family: 'Love Ya Like A Sister', sans-serif;
-    color: blueviolet;
+    color: #c2b0f0;
+    font-weight: bold;
 }
 
 
 div
 {
     font-size: x-large;
-    color: blueviolet;
+    color: #c2b0f0;
 }
 
 ol
@@ -237,6 +281,8 @@ input[type="email"] {
     background-color: #f9f9f9;
     color: #333;
     transition: all 0.3s ease-in-out;
+    flex: 1;
+    align-items: flex-start;
 }
 
 input[type="password"] {
@@ -250,11 +296,30 @@ input[type="password"] {
     background-color: #f9f9f9;
     color: #333;
     transition: all 0.3s ease-in-out;
+    flex: 1;
+    align-items: flex-start;
 }
 
-label
+label 
 {
-    font-size: large;
-    color: black;
-    font-weight:bold;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: darkgray;
+    margin-bottom: 10px;
+    display: block;
+    flex: 1;
+    align-items: flex-start;
+    font-weight: bold;
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bolder;
+    font-family: 'Love ya like a sister', sans-serif;
+    color: darkgray;
+}
+
