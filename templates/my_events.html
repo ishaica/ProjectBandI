@@ -30,13 +30,12 @@
                     </tr>
                 {% endfor %}
             </table>
-            <h3 class = "corner_link1">
+            <div class = "corner_links">
                 <a href="/host_page"> Back </a>
-            </h3>
+            </div>
         {% else %}
             <h1> No upcoming events </h1>
         {% endif %}
+        <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </body>
-<footer>
-    <p> @ ben_ashamen </p>
-</footer>
+

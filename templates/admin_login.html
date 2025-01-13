@@ -13,6 +13,9 @@
                 {% endfor %}
             </ul>
         {% endif %}
+        <div class = "corner_links">
+            <a href="/"> Homepage </a>
+        </div>
         <br> <br> <br> <br> <br> <br> <br> <br> <br>
     <form action="/admin_login" method="post"> 
         <label for="username" value = "{{input_username if input_username else ''}}"> Admin Key </label> <br>
@@ -22,12 +25,6 @@
         <input class = "button3" type="submit" value="">
     </form>
     {% endwith %}
-
-    <h3 class = "corner_link1">
-        <a href="/"> Homepage </a>
-    </h3>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </body>
-<footer>
-    <p> @ ben_ashamen </p>
-</footer>
 

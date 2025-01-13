@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class = "corner_links">
+        <a href="/"> Homepage </a>
     <h2 class = "admin_panel">
     {{ first_name }}'s Admin panel
     </h2>
@@ -55,10 +57,6 @@
             <h1> No hosts </h1>
         {% endif %}
         {% endwith %}
-    <h3 class = "corner_link1">
-        <a href="/"> Homepage </a>
-        </h3>
+        <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </body>
-<footer>
-    <p> @ ben_ashamen </p>
-</footer>
+

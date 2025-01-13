@@ -5,7 +5,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>   
-    <br> <br> <br> <br> <br>
+    <br><br><br>
+    <div class = "corner_links">
+        <a href="/"> Homepage </a>
+    </div>
     <form method="POST">
     {% with input_email = input_email %}
     {% with messages = get_flashed_messages() %}
@@ -31,10 +34,6 @@
     <a class="to_login" href="/sign_up">
          <button class = "button3"> </button>
     </a>
-    <h3 class = "corner_link1">
-        <a href="/"> Homepage </a>
-    </h3>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"> </script>
 </body>
-<footer>
-    <p> @ ben_ashamen </p>
-</footer>
+
