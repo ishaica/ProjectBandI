@@ -16,24 +16,11 @@
     justify-content: center;
     align-items: center;
     display: inline-block;
-    gap: 8px;
     border-radius: 100px;
     border-color: #c2b0f0;
     background: var(--Schemes-Primary, #c2b0f0);
-
+    font-family: Varela Round;
 }
-.button1
- {
-    width: 200px;
-    height: 50px;
-    font-size: 16px;
-    background-color: #e7e7e7; 
-    color: black;
-    border-radius: 12px;
-    cursor: pointer;
-    display: inline-block;
-    margin : 10px;
- }
 
  .ramen_button
 {
@@ -49,8 +36,46 @@
     align-content: center;
  }
 
+ .food_button
+{
+    width: 180px;
+    height: 180px;
+    border: none;
+    border-radius: 143px;
+    cursor: pointer;
+    background-image: url('../static/images/food.png');
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-content: center;
+ }
 
+ .drink_button
+{
+    width: 180px;
+    height: 180px;
+    border: none;
+    border-radius: 143px;
+    cursor: pointer;
+    background-image: url('../static/images/drink.png');
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-content: center;
+ }
 
+.art_button{
+    width: 180px;
+    height: 180px;
+    border: none;
+    border-radius: 143px;
+    cursor: pointer;
+    background-image: url('../static/images/art.png');
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-content: center;
+}
 .to_login
 {
     text-align: center;
@@ -76,6 +101,7 @@
     width: 40%; 
     margin: auto;
     margin-top: 40px;
+    
 }
 
 .inner_block2
@@ -136,42 +162,23 @@
     justify-content: space-between;
     gap: 15px;
 }
-
-.table_header
-{
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
-    font-size: x-large;
-    font-weight: bold;
-    width: 100%;
-}
-
-.table_row
-{
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
-    font-size: large;
-    width: 100%;
-}
-
-
 .delete_button
 {
-    background-image: url('../static/images/delete.png');
-  
+    height: 30px;
+    width: 30px;
+    color:white;
+    background-color: red;
 }
 
 .delete_button:hover
 {
-    background-color: gainsboro
+    background-color: darkred;
+    cursor: pointer;
 }
 
-.admin_greeting
+.admin_panel
 {
-    text-align: left;
+    text-align: right;
     color: darkgrey;
 }
 
@@ -180,6 +187,16 @@
     display: flex;
     justify-content: center;
     font-weight: bold;
+}
+
+.button_container
+{
+    gap: 20px;
+    margin-top:200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
 }
 
 .group label 
@@ -228,7 +245,8 @@
 body 
 {
     text-align: center;
-    background-color: #f9f9f9;                    
+    background-color: #f9f9f9;    
+    font-family: Varela Round;                
 }
 
 h1
@@ -323,3 +341,28 @@ footer {
     color: darkgray;
 }
 
+table 
+{
+    width: 80%; /* Make the table take full width of its container */
+    border-collapse: collapse; /* Ensure borders are seamless */
+    margin-left: 180px;
+    margin-right: 80px;
+}
+
+th
+{
+    
+    padding: 10px;
+    text-align: center; /* Align content in the center */
+    border: 1px solid darkgray(232, 222, 222);
+    font-size: x-large;
+    font-weight: bold;
+    background-color: #c2b0f0;
+}
+
+td {
+    border: 1px solid darkgray; /* Add borders to cells */
+    padding: 10px; /* Add spacing inside cells */
+    text-align: center; /* Center-align text in cells */
+    font-size:large;
+}

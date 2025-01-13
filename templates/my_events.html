@@ -10,28 +10,32 @@
         <h2> {{ message }} </h2> 
     {% endif %}
     {% endwith %}
-    {% with my_events = my_events %}
+    <br> <br> <br> <br>
         {% if my_events %}
-            <table class="event_table">
+            <table>
+                <tr>
+                    <th>Event Type</th>
+                    <th>Event Date</th>
+                    <th>Delete</th>
+                </tr>
                 {% for event in my_events %}
-                    <tr class="event_table"> </tr>
+                    <tr class = "table_row"> 
                     <td> {{event.event_type}} </td>
                     <td> {{event.event_date}} </td>
-                    <td class="event_table" style="width:45px; text-align:center"> 
+                    <td > 
                         <form action="{{ url_for('main.delete_my_event_by_id', id=event.id) }}" method="POST">
                             <button type="submit" class="delete_button">X</button>
                         </form>                
                     </td>
+                    </tr>
                 {% endfor %}
-            </ul>  
             </table>
-            <h3 class = "corner_link">
-                <a href="/host_page"> back </a>
+            <h3 class = "corner_link1">
+                <a href="/host_page"> Back </a>
             </h3>
         {% else %}
             <h1> No upcoming events </h1>
         {% endif %}
-        {% endwith %}
 </body>
 <footer>
     <p> @ ben_ashamen </p>

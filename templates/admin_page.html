@@ -5,38 +5,38 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h2 class = "admin_greeting">
+    <h2 class = "admin_panel">
     {{ first_name }}'s Admin panel
     </h2>
     <br> <br>
     {% with message = get_flashed_messages() %}
     {% if message %}
-        <h2> {{ message }} </h2> 
+        <h2 class ="error"> {{ message }} </h2> 
     {% endif %}
     {% endwith %}
     {% with events = events %}
     <h2 class="admin_header"> Events </h2>
     {% if events %}
-    <table style="display: flex; justify-content: center;">
-        <tr class="table_row">
-            <th class="table_header">Event Type</th>
-            <th class="table_header">Address</th>
-            <th class="table_header">Event Date</th>
-            <th class="table_header">Time</th>
+    <table>
+        <tr>
+            <th>Event Type</th>
+            <th>Address</th>
+            <th>Event Date</th>
+            <th>Time</th>
 
         </tr>
     {% for event in events %}
         <div>
-            <tr class="table_row">    
+            <tr>    
+                <td> {{ event.event_type }} </td>
+                <td> {{ event.address }} </td>
+                <td> {{ event.event_date }} </td>
+                <td> {{ event.time }} </td>
                 <td>
                     <form action="{{ url_for('main.delete_event_by_id', id=event.id) }}" method="POST">
                         <button type="submit" class="delete_button">X</button>
                     </form>      
                  </td>      
-                <td class="table_item"> {{ event.event_type }} </td>
-                <td class="table_item"> {{ event.address }} </td>
-                <td class="table_item"> {{ event.event_date }} </td>
-                <td class="table_item"> {{ event.time }} </td>
             </tr>
         </div>
     {% endfor %}
@@ -55,6 +55,9 @@
             <h1> No hosts </h1>
         {% endif %}
         {% endwith %}
+    <h3 class = "corner_link1">
+        <a href="/"> Homepage </a>
+        </h3>
 </body>
 <footer>
     <p> @ ben_ashamen </p>

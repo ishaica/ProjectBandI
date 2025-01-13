@@ -45,6 +45,18 @@ def delete_event_by_id(id):
 def pop_list():
     return render_template('pop_list.html', events=Event.query.order_by(Event.event_date.desc(),
      Event.time.desc()).all())
+    
+@main.route('/food_list')
+def food_list():
+    return render_template('food_list.html')
+
+@main.route('/drink_list')
+def music_list():
+    return render_template('drink_list.html')
+
+@main.route('/art_list')
+def art_list():
+    return render_template('art_list.html')
 
 @main.route('/login', methods=['GET', 'POST'])
 def login():
