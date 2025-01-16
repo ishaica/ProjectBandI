@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, current_app 
-from datetime import datetime
+from datetime import datetime , timedelta
 from db import db
 from models import Host, Event
 from form_validations.sign_up_validation import validate_host
@@ -43,8 +43,10 @@ def delete_event_by_id(id):
 
 @main.route('/pop_list')
 def pop_list():
-    return render_template('pop_list.html', events=Event.query.order_by(Event.event_date.desc(),
-     Event.time.desc()).all())
+    date_a = datetime.now().date()
+    date_b = (datetime.now() + timedelta(days=7)).date()
+    event_count = Event.query.filter(Event.event_date >= date_a, Event.event_date <= date_b).count()
+    return render_template('pop_list.html', event_count=event_count)
     
 @main.route('/food_list')
 def food_list():

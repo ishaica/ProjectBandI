@@ -3,8 +3,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
 </head>
 <body>
+    <div class = "corner_links">
+        <a href="/"> Homepage </a>
+    </div>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
@@ -14,11 +18,11 @@
             </ul>
         {% endif %}
     {% endwith %}
-    <h1> Event Application </h1>
-    <form method="POST" action="/new_event">
+    <h1 class="title"> Event Application </h1>
+    <form method="POST" action="/new_event" >
         <div class="outer_block">
             <div class="inner_block">
-                <label for="event_type"> What's your event? </label><br>
+                <label for="event_type" class="form_field"> What's your event? </label><br>
                 <select class="event_type" name="event_type" required>
                     <option value="ramen night" {% if form_data and form_data.event_type == "ramen night" %}selected{% endif %}>Ramen Night</option>
                     <option value="dinner party" {% if form_data and form_data.event_type =="dinner party" %}selected{% endif %}>Dinner Party</option>
@@ -29,31 +33,37 @@
                     <option value="art exhibition" {% if form_data and form_data.event_type == "art exhibition" %}selected{% endif %}>Art Exhibition</option>
                     <option value="none of the above" {% if form_data and form_data.event_type == "none of the above" %}selected{% endif %}>None of the Above</option>
                 </select>
-                <label for="description"> Event Description </label>
+                <label for="description" class="form_field"> Event Description </label>
                 <textarea id="description" name="description" maxlength="100" required 
                           style="width: 100%; height: 100px; border-radius: 10px;">{{ form_data.description if form_data else '' }}</textarea>
                 <br><br>
             </div>
-            <div class = "inner_block2">
-                <label for="address"> Location </label><br>
+            <div class = "inner_block">
+                <label for="address" class="form_field"> Location </label><br>
                 <input class ="event_input" type="text" id="address" name="address" maxlength="100" 
                        value="{{ form_data.address if form_data else '' }}" required ><br><br>
-                <label for="event_date"> Date </label><br>
-                <input class ="event_input" type="date" id="event_date" name="event_date" 
-                       value="{{ form_data.event_date if form_data else '' }}" required ><br><br>
-                <label for="time"> Time </label><br>
-                <input class ="event_input" type="time" id="time" name="time" 
-                       value="{{ form_data.time if form_data else '' }}" required><br><br>
-                <label for="price_range"> Price Range </label><br>
-                <input class ="event_input" type="text" id="price_range" name="price_range" maxlength="30" 
-                       value="{{ form_data.price_range if form_data else '' }}" required><br><br>
+                <div class="date_time">
+                        <label for="event_date" class="form_field"> Date </label><br>
+                        <input class ="event_input" type="date" id="event_date" name="event_date" 
+                         value="{{ form_data.event_date if form_data else '' }}" required ><br><br>
+                        <label for="time" class="form_field"> Time </label><br>
+                        <input class ="event_input" type="time" id="time" name="time" 
+                            value="{{ form_data.time if form_data else '' }}" required><br><br>
+                </div>
+            <br> <br>
+                <label for="price_range" class="form_field"> Price Range </label><br>
+                <input class ="event_input" type="text" id="price_range" name="price_range" placeholder="Min Price - Max Price" maxlength="30" 
+                       value="{{ form_data.price_range if form_data else '' }}" required ><br><br>
             </div>
         </div>
-        <button type="submit" class="button3" value="Submit"> </button>
+        <button type="submit" class="button3" value="Submit"> Submit </button>
     </form>
-    <div class = "corner_links">
-        <a href="/"> Homepage </a>
-    </div>
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("input[type=date]", {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+    });
 

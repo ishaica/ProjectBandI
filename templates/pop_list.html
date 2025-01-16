@@ -5,21 +5,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    {% with pop_list = pop_list %}
-        {% if pop_list %}
-            <table class="event_table">
-                {% for pop in pop_list %}
-                    <tr class="event_table"> {{pop.event_type}} - {{pop.event_date}} </tr>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {% endwith %}
+    {% with event_count = event_count - 1 %}
     <div class = "corner_links">
     <a href="/"> Homepage </a>
     </div>
    <h1 class="title"> This week's pop ups </h1> 
-   <h2 style="margin-top: -15px; color:darkgrey"> What do you feel like? </h2>
-
+   {% endwith %}
+   <div class="pop_list_container">
+   <h3> What do you feel like? </h3>
+   <br> <br>
    <div class="button_container">
         <a href="/food_list">
             <button class="food_button"></button>
@@ -31,7 +25,9 @@
             <button class="art_button"></button>
         </a>
    </div>
-   <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+   <br> <br> <br>
+   <h5 style="color:darkgray"> over {{ event_count }} pop-ups for you to check out this week! </h5> 
+   </div>
 </body>
 
 

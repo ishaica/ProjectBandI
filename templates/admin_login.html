@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class = "corner_links">
+        <a href="/"> Homepage </a>
+    </div>
     {%with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
@@ -13,18 +16,20 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        <div class = "corner_links">
-            <a href="/"> Homepage </a>
-        </div>
         <br> <br> <br> <br> <br> <br> <br> <br> <br>
     <form action="/admin_login" method="post"> 
-        <label for="username" value = "{{input_username if input_username else ''}}"> Admin Key </label> <br>
+        <label for="username" value = "{{input_username if input_username else ''}}" class="form_field"> Admin Key </label> <br>
         <input type="text" id="username" name="username"> <br> <br>
-        <label for="password"> Password </label> <br>
-        <input type="password" id="password" name="password"> <br> <br> <br>
-        <input class = "button3" type="submit" value="">
+        <div class="password_container"> 
+            <div>
+            <label for="password" class="form_field"> Password </label>
+            <button type="button" id="toggle_password"> </button>
+            </div>
+            <input type="password" id="password" name="password" required>
+            </div>
+            <br><br>
+            <button class="button3" type="submit" value="Submit"> Login </button>
     </form>
     {% endwith %}
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </body>
 

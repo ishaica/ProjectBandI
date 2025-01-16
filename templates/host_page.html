@@ -5,9 +5,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class = "corner_links">
+        <a href="/"> Homepage </a>
+    </div>
+    <br> 
     {% with first_name = first_name %}
     {% if first_name %}
-        <h1>
+        <h1 class = "title">
             Welcome back,
             {{ first_name }} !
         </h1>
@@ -26,10 +30,6 @@
             <button class = "button3" style= "width: 150; height : 60px" > New event </button>
         </a>
     </div>
-    <div class = "corner_links">
-        <a href="/"> Homepage </a>
-    </div>
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </body>
 
 

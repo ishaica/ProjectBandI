@@ -7,6 +7,7 @@
 <body>
     <div class = "corner_links">
         <a href="/"> Homepage </a>
+    </div>
     <h2 class = "admin_panel">
     {{ first_name }}'s Admin panel
     </h2>
@@ -17,7 +18,7 @@
     {% endif %}
     {% endwith %}
     {% with events = events %}
-    <h2 class="admin_header"> Events </h2>
+    <h2 class="admin_panel"> Events </h2>
     {% if events %}
     <table>
         <tr>
@@ -46,17 +47,19 @@
             {% endif %}
     {% endwith %}
     <br> <br>
-    <ul>
         {% with hosts = hosts %}
         {% if hosts %}
-        <h2 class="admin_header"> Hosts </h2>
+        <div class="host_list">
+        <h2 class="admin_panel"> Hosts </h2>
+        <ul>
             {% for host in hosts %}
-                <h3> {{ host.first_name }} {{ host.last_name }} </h3>
+                <li> {{ host.first_name }} {{ host.last_name }} </li>
             {% endfor %}
+        </ul>
+        </div>
         {% else %}
             <h1> No hosts </h1>
         {% endif %}
         {% endwith %}
-        <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </body>
 

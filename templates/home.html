@@ -4,23 +4,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/ramen.jpg') }}">
 </head>
 <body>
     <div class="corner_links">
-    <a href="/admin_login" id="admin_header"> Admin </a> 
-    <a href="/login" id="host_header"> Host </a>
+        <a href="/admin_login" id="admin_header"> Admin </a> 
+        <a href="/login" id="host_header"> Host </a>
     </div>
     <h1 class="title">
         Welcome to Underground TLV  
     </h1>
-    <div class="ben_ashamen"> <h5> by </h5> <a href="https://www.instagram.com/ben_ashamen/" class="insta_link" > @ben_ashamen </a> </div>  
+    <div class="ben_ashamen"> <h5> by </h5> <a href="https://www.instagram.com/ben_ashamen/" class="insta_link" target="_blank"> @ben_ashamen </a> </div>  
     <br><br><br><br><br>
     <div style="text-align: center;">
         <a href="/pop_list">
             <button class="ramen_button"></button>
         </a>                        
     </div>
-<script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </body>
 </html>
