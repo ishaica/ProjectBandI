@@ -51,25 +51,18 @@
     transform: scale(1.1); 
     
 }
- .ramen_button
-{
-    width: 180px;
-    height: 180px;
-    border: none;
-    border-radius: 143px;
-    cursor: pointer;
-    background-image: url('../static/images/ramen.png');
-    background-size: cover;
-    background-position: center;
-    justify-content: center;
-    align-content: center;
-    transition: all 0.1s ease-in-out;
+ .pop_l
+ {
+    text-decoration: None;
+    color: #c2b0f0;
+    font-size: 40px;
  }
 
- .ramen_button:hover
- {
-    transform: scale(1.1);
- }
+.pop_l:hover
+{
+    color:darkgray;
+    cursor: pointer;
+}
 
  .food_button
 {
@@ -139,32 +132,6 @@
     font-weight: bold;
 }
 
-.outer_block
-{
-    display: flex;
-    justify-content: space-between; 
-    gap: 10px; 
-    font-size: x-large;
-}
-
-.inner_block
-{
-    display: flex;
-    text-align: left; 
-    justify-content: center;
-    flex-direction: column; 
-    width: 40%; 
-    margin: auto;
-    margin-top: 20px;
-    
-}
-
-.inner_block2
-{
-    margin-top: 40px;
-    margin-bottom: 40px;
-    margin-right: 170px;
-}
 
 .event_input
 {
@@ -204,7 +171,7 @@
 {
     margin-top: 30px;
     font-family: 'Varela Round', sans-serif;
-    font-size: 42px;
+    font-size: 50px;
     color: #c2b0f0;
     font-weight: bold;
 }
@@ -247,21 +214,6 @@
     margin: 40px auto;
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.group {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 45%;
-    gap: 10px;
-    margin-bottom: 20px;
-}
 
 .single_button_container {
     display: flex;
@@ -269,8 +221,6 @@
     align-items: center;
     width: 100%;
 }
-
-
 
 .delete_button
 {
@@ -353,17 +303,16 @@
 
 .event_type
 {
-    width: 140px;
+    width: 180;
     height: 30px;
     font-size: 16px;
     color: black;
     border-radius: 8px;
     cursor: pointer;
-    display: inline-block;
     font-family: Varela Round;
-    margin-bottom: 60px;
     border: 2px solid #ccc;
     background-color: #f9f9f9;
+    margin-top:-20px;
 }
 
 .ben_ashamen
@@ -375,6 +324,7 @@
     margin-top: -45px;
     gap: 7px;
 }
+
 .insta_link
 {
     font-size: 20px;
@@ -390,11 +340,32 @@
     text-decoration: underline;
 }
 
+.container_signup
+{
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    grid-template-rows: repeat(3, 150px);
+    gap: 50px;
+}
+
+.container_newevent
+{
+    gap: 30px;
+    display: flex;
+    text-align: left; 
+    justify-content: center;
+    flex-direction: column; 
+    width: 40%; 
+    margin: auto;
+    margin-top: 20px;
+}
+
+
 body 
 {
-    text-align: center;
-    background-color: #f9f9f9;    
-    font-family: Varela Round;                
+    text-align: center;   
+    font-family: Varela Round;      
+    background-image: radial-gradient(#f9f9f9 50%,darkgray);  
 }
 
 
@@ -512,15 +483,13 @@ td {
 textarea 
 {
     margin-top: 10px;
-    width: 100%;
     max-width: 600px;
-    padding: 10px;
+    padding: 5px;
     font-size: 16px;
     font-family: Varela Round;
     border: 2px solid #ccc;
-    border-radius: 5px;
     background-color: #f9f9f9;
     color: #333;
-    transition: all 0.3s ease-in-out;
 }
+
 

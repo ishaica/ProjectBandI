@@ -18,8 +18,8 @@
     {% endwith %}
     <br>
     <form method="POST" class="sign_up_form">
-        <div class="row">
-            <div class="group">
+        <div class="container_signup">
+            <div class="item">
                 {% if errors.get('First Name') %}
                 <ul>
                     {% for error in errors['First Name'] %}
@@ -30,8 +30,7 @@
                 <label for="first_name" class="form_field">First Name</label>
                 <input type="text" id="first_name" name="first_name" value="{{ form_data.first_name if form_data else '' }}" maxlength="20" required>
             </div>
-
-            <div class="group">
+            <div class="item">
                 {% if errors.get('Last Name') %}
                 <ul>
                     {% for error in errors['Last Name'] %}
@@ -42,8 +41,7 @@
                 <label for="last_name" class="form_field">Last Name</label>
                 <input type="text" id="last_name" name="last_name" value="{{ form_data.last_name if form_data else '' }}" maxlength="30" required>
             </div>
-
-            <div class="group">
+            <div class="item">
                 {% if errors.get('Phone') %}
                 <ul>
                     {% for error in errors['Phone'] %}
@@ -54,8 +52,7 @@
                 <label for="phone" class="form_field">Phone</label>
                 <input type="text" id="phone" name="phone" maxlength="11" value="{{ form_data.phone if form_data else '' }}" required>
             </div>
-
-            <div class="group">
+            <div class="item">
                 {% if errors.get('Email') %}
                 <ul>
                     {% for error in errors['Email'] %}
@@ -66,8 +63,7 @@
                 <label for="email" class="form_field">Email</label>
                 <input type="email" placeholder="example@example.com" id="email" name="email" maxlength="50" value="{{ form_data.email if form_data else '' }}" required>
             </div>
-
-            <div class="group">
+            <div class="item">
                 {% if errors.get('Password') %}
                 <ul>
                     {% for error in errors['Password'] %}
@@ -81,8 +77,7 @@
                 <button type="button" id="toggle_password"> </button>
                 <input type="password" id="password1" name="password1" maxlength="30" required>
             </div>
-
-            <div class="group">
+            <div class="item">
                 <label for="password2" class="form_field">Confirm Password</label>
                 <input type="password" id="password2" name="password2" maxlength="30" required>
             </div>
