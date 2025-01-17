@@ -21,16 +21,27 @@
     <h1 class="title"> Event Application </h1>
     <form method="POST" action="/new_event" >
         <div class="container_newevent">
-                <label for="event_type" class="form_field"> What's your event? </label>
+            <div class="item1">
+                <label for="host" class="form_field"> Host </label>
+                <input class ="text" type="text" id="host" name="host" maxlength="20" 
+                       value="{{ form_data.host if form_data else '' }}" required >
+            </div>
+            <br>
+            <div class="item2">
+                <label for="event_name" class="form_field"> Event Name </label>
+                <input class ="text" type="text" id="event_name" name="event_name" maxlength="30" 
+                       value="{{ form_data.event_name if form_data else '' }}" required >
+            </div>
+                <label for="event_type" class="form_field"> What's the event? </label>
                 <select class="event_type" name="event_type" required>
                     <option value="ramen night" {% if form_data and form_data.event_type == "ramen night" %}selected{% endif %}>Ramen Night</option>
                     <option value="dinner party" {% if form_data and form_data.event_type =="dinner party" %}selected{% endif %}>Dinner Party</option>
                     <option value="wine tasting" {% if form_data and form_data.event_type == "wine tasting" %}selected{% endif %}>Wine Tasting</option>
                     <option value="vegan fest" {% if form_data and form_data.event_type == "vegan fest" %}selected{% endif %}>Vegan Fest</option>
                     <option value="supper club" {% if form_data and form_data.event_type == "supper club" %}selected{% endif %}>Supper Club</option>
-                    <option value="garage sale" {% if form_data and form_data.event_type == "garage sale" %}selected{% endif %}>Garage Sale</option>
-                    <option value="art exhibition" {% if form_data and form_data.event_type == "art exhibition" %}selected{% endif %}>Art Exhibition</option>
-                    <option value="none of the above" {% if form_data and form_data.event_type == "none of the above" %}selected{% endif %}>None of the Above</option>
+                    <option value="oysters" {% if form_data and form_data.event_type == "oysters" %}selected{% endif %}>Oysters</option>
+                    <option value="food festival" {% if form_data and form_data.event_type == "food festival" %}selected{% endif %}>Food Festival</option>  
+                    <option value = "cocktail party" {% if form_data and form_data.event_type == "cocktail party" %}selected{% endif %}>Cocktail Party</option>
                 </select>
             <div class="item2">
                 <label for="description" class="form_field"> Event Description </label>
@@ -61,10 +72,18 @@
                 <input class ="event_input" type="text" id="price_range" name="price_range" placeholder="Min Price - Max Price" maxlength="30" 
                        value="{{ form_data.price_range if form_data else '' }}" required >
                 </div>
+                <div class = "item7">
+                    <label for="phone" class="form_field"> Phone Number </label>
+                    <input class ="event_input" type="text" id="phone" name="phone" placeholder="05" maxlength="10" 
+                           value="{{ form_data.phone if form_data else '' }}" required >
+                </div>
+                </div>
             </div>
         </div>
         <br><br>
+        <a href="/admin_page">
         <button type="submit" class="button3" value="Submit"> Submit </button>
+        </a>
     </form>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

@@ -31,10 +31,10 @@
     {% for event in events %}
         <div>
             <tr>    
-                <td> {{ event.event_type }} </td>
+                <td> {{ event.host }} </td>
+                <td> {{ event.event_name }}</td>
                 <td> {{ event.address }} </td>
                 <td> {{ event.event_date }} </td>
-                <td> {{ event.time }} </td>
                 <td>
                     <form action="{{ url_for('main.delete_event_by_id', id=event.id) }}" method="POST">
                         <button type="submit" class="delete_button">X</button>
@@ -46,20 +46,9 @@
     </table>
             {% endif %}
     {% endwith %}
-    <br> <br>
-        {% with hosts = hosts %}
-        {% if hosts %}
-        <div class="host_list">
-        <h2 class="admin_panel"> Hosts </h2>
-        <ul>
-            {% for host in hosts %}
-                <li> {{ host.first_name }} {{ host.last_name }} </li>
-            {% endfor %}
-        </ul>
-        </div>
-        {% else %}
-            <h1> No hosts </h1>
-        {% endif %}
-        {% endwith %}
+    <br> <br> <br> <br>
+
+    <a class='button3', href='/new_event'> Add Event </a>
+
 </body>
 

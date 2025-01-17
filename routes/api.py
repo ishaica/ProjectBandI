@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, render_template
-from models import Host, Event
+from models import Event
 
 api = Blueprint('api', __name__)
 

@@ -6,27 +6,71 @@
 </head>
 <body>
     {% with event_count = event_count - 1 %}
-    <div class = "corner_links">
-    <a href="/"> Homepage </a>
-    </div>
-   <h1 class="title"> This week's pop ups </h1> 
    {% endwith %}
    <div class="pop_list_container">
-   <h3> What do you feel like? </h3>
-   <br> <br>
-   <div class="button_container">
-        <a href="/food_list">
-            <button class="food_button"></button>
+   <h1 class="title"> What are we feeling like ? </h1>
+    <br> 
+    <div class="button_container">
+    <div class="item1">
+        <a href="/ramen_list">
+            <button class="ramen"> Ramen </button>
         </a>
-        <a href="/drink_list">
-            <button class="drink_button"></button>
+    </div>
+    <div class="item2">
+        <a href="/dinner_list">
+            <button class="dinner"> Dinner Party </button>
         </a>
-        <a href="/art_list">
-            <button class="art_button"></button>
+    </div>
+    <div class="item3">
+        <a href="/wine_list">
+            <button class="wine"> Wine Tasting </button>
+        </a>
+    </div>
+    <div class="item4"> 
+        <a href="/vegan_list">
+            <button class="vegan"> Vegan Fest </button>
+        </a>
+    </div>
+    <div class="item5">
+        <a href="/supper_list">
+            <button class="wine"> Supper Club </button>
+        </a>
+    </div>
+    <div class="item6">
+        <a href="/oyster_list">
+            <button class="oyster"> Oyster </button>
+        </a>
+    </div>
+    <div class="item7">
+        <a href="/supper_list">
+            <button class="supper"> Food Festival </button>
+        </a>
+    </div>
+    <div class="item8">
+        <a href="/cocktail_list">
+            <button class="cocktail"> Cocktail Party </button>
+        </a>
+    </div>
+   </div>
         </a>
    </div>
-   <br> <br> <br>
-   <h5 style="color:darkgray"> over {{ event_count }} pop-ups for you to check out this week! </h5> 
+   <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+   <h4 style="color:darkgray"> over {{ event_count }} pop-ups for you to check out this week! </h4gap: 200px;
+    width: 120px;
+    /* height: 90px; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: var(--Schemes-Primary, #c2b0f0); */
+    font-family: 'Varela Round';
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    /* transition: all 0.1s ease-in-out; */
+    display: grid
+;
+    grid-template-columns: repeat(4, 50%);
+    grid-template-rows: repeat(2, 50%);> 
    </div>
 </body>
 
